@@ -1,0 +1,41 @@
+
+We have M = U*sigma*V
+U: mxm
+
+sigma: m*d
+
+V: dxd
+
+the rank of M is r
+
+We want to measure how much memory saving we gain.
+
+(A) = M*k + k + d*k = k * (m + d + 1)
+
+(B) = M*r + r + d*r = r * (m + d + 1)
+
+1 - (2 k n + k) / (2 n r + n)
+
+
+[2 n r + n - 2 k n - k] / (2 n r + n)
+
+A = [n (r - k) + (n - k) + n (r - k)]
+---------------------------------
+B = [n (r - 0) + (n - 0) + n (r - 0)]
+
+(A) = n*k + k + n*k = 2nk + k
+(B) = n*r + r + n*r = 2nr + r
+
+When zeroing the (n-k) smaller singular values (or r-k if you take into account the rank), we are also zeroing the
+corresponding singular vectors (columns in U and V), so in this exercise, we want count the number of non-zeros in the three matrices U,
+Sigma, V before and after this compression and take the ratio.
+
+When doing this calculation you can take into account the rank or ignore it - and bellow you will see that the different
+is not important for us.
+
+Assume U is mxm, Sigma is mxd, V is dxd , and let r be the rank of the original matrix.
+before the decompression: total of m^2+d^2+d non-zeros (or mr+dr+r if you take into account the rank in compact SVD)
+
+After the decompression:  total of mk+dk+k non-zeros
+In a square matrix you get the formula in the exercise (or Nofar's answers, taking r into account)
+Since the different with/without the rank is only in the denominator, it won't change the shape of your graph.
